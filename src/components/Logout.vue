@@ -16,22 +16,20 @@
 </template>
 
 <script>
-import authService from '@/services/AuthenticationService'
-
 
 export default {
-    name: 'Logout',
-    data () {
-        return {
-        }
-    },
-    methods: {
-        async logout(){
-            this.$store.dispatch('setToken',null)
-            this.$store.dispatch('setUser', null)
-            this.$router.push("/")
-        }
+  name: 'Logout',
+  data () {
+    return {
     }
+  },
+  methods: {
+    async logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 

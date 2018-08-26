@@ -1,7 +1,6 @@
 <template>
   <div>
-    
-    
+
       <v-layout>
         <v-flex xs4>
           <panel title="New Project">
@@ -21,7 +20,7 @@
           </panel>
         </v-flex>
       </v-layout>
-    
+
   </div>
 </template>
 
@@ -30,7 +29,7 @@ import testsService from '@/services/TestsService'
 import Panel from '@/components/Panel'
 export default {
   name: 'Projects',
-  components:{
+  components: {
     Panel
   },
   data () {
@@ -44,12 +43,12 @@ export default {
     this.getProjects()
   },
   methods: {
-    async create(){
-        var newproject = await testsService.createProject({
-          name: this.name,
-          url: this.url
-        })
-        this.projects.push(newproject)
+    async create () {
+      var newproject = await testsService.createProject({
+        name: this.name,
+        url: this.url
+      })
+      this.projects.push(newproject)
     },
     getProjects: async function () {
       var r = await testsService.projects()

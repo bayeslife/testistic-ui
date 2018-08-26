@@ -8,12 +8,12 @@
         </v-container>
       </main>
     </v-app>
-    
+
   </div>
 </template>
 
 <script>
-import  PageHeader from '@/components/Header.vue'
+import PageHeader from '@/components/Header.vue'
 
 export default {
   name: 'App',

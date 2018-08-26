@@ -10,11 +10,10 @@
 </template>
 
 <script>
-import testsService from '@/services/TestsService'
 export default {
   name: 'Panel',
   props: [
-      'title'
+    'title'
   ]
 }
 </script>

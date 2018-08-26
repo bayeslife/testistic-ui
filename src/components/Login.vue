@@ -21,23 +21,22 @@
 <script>
 import authService from '@/services/AuthenticationService'
 
-
 export default {
-    name: 'Login',
-    data () {
-        return {
-            email: 'email',
-            password: 'password'
-        }
-    },
-    methods: {
-        async login(){
-            var credentials = await authService.signin(this.email,this.password)
-            this.$store.dispatch('setToken',credentials.token)
-            this.$store.dispatch('setUser', credentials.user)
-             this.$router.push("/")
-        }
+  name: 'Login',
+  data () {
+    return {
+      email: 'email',
+      password: 'password'
     }
+  },
+  methods: {
+    async login () {
+      var credentials = await authService.signin(this.email, this.password)
+      this.$store.dispatch('setToken', credentials.token)
+      this.$store.dispatch('setUser', credentials.user)
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 

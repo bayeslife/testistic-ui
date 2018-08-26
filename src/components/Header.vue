@@ -33,7 +33,7 @@
       </v-btn>
 
       <v-btn v-if="!$store.state.isUserLoggedIn" icon>
-        <v-icon @click="navigateTo('login')">perm_identity</v-icon></v-icon>
+        <v-icon @click="navigateTo('login')">perm_identity</v-icon>
       </v-btn>
 
     <v-menu offset-y >
@@ -60,15 +60,15 @@
 
 <script>
 export default {
- data () {
+  data () {
     return {
     }
- },
- methods: {
-     navigateTo(route){
-         this.$router.push(route)
-     }
- }
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
+  }
 }
 </script>
 

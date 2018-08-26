@@ -27,7 +27,7 @@
 import Panel from '@/components/Panel'
 export default {
   name: 'Dashboard',
-  components:{
+  components: {
     Panel
   },
   data () {

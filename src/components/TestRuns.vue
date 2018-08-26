@@ -22,7 +22,7 @@
     </v-flex>
     <v-flex d-flex xs12 sm6 md6>
       <panel title="Test Runs">
-  
+
   <b-table :items="testruns" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc">
     <template slot="show_details" slot-scope="row">
       <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">
@@ -47,7 +47,6 @@
     </template>
   </b-table>
 
-        
       </panel>
     </v-flex>
   </v-layout>
@@ -68,10 +67,10 @@ export default {
   data () {
     return {
       value: null,
-      projects: ["Project1","Project2"],
-      initiatives: ["Feature1","Feature2"],
+      projects: ['Project1', 'Project2'],
+      initiatives: ['Feature1', 'Feature2'],
       testruns: [],
-      sortBy: "startdate",
+      sortBy: 'startdate',
       sortDesc: true,
       fields: [ 'epic', 'source', 'when', 'show_details' ]
     }
@@ -83,18 +82,18 @@ export default {
     getTestRuns: async function () {
       var r = await testsService.testruns()
       console.log(r)
-      var table = r.map((tr)=>{ return {
-         _rowVariant: tr.status ? 'success' : 'danger',
+      var table = r.map((tr) => {
+        return {
+          _rowVariant: tr.status ? 'success' : 'danger',
           epic: tr.epic,
           source: tr.source,
           target: tr.target,
           description: tr.description,
           startdate: tr.startdate,
           when: moment(tr.startdate).fromNow()
-        }  
+        }
       })
       this.testruns = table
-      
     }
   }
 }

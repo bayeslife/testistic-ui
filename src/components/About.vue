@@ -8,7 +8,7 @@
 import Panel from '@/components/Panel'
 export default {
   name: 'About',
-  components:{
+  components: {
     Panel
   },
   data () {
