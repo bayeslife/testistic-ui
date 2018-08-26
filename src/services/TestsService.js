@@ -1,4 +1,4 @@
-import api from '@/services/Api'
+import api from '@/services/api'
 
 export default {
   async testruns () {
