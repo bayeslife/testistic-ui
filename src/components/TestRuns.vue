@@ -24,11 +24,15 @@
       <panel title="Test Runs">
 
   <b-table :items="testruns" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc">
+    <template slot="project" slot-scope="data">
+      <a :href="`#/projects/${data.item.project}`" >{{data.item.project}} </a>
+    </template>
     <template slot="show_details" slot-scope="row">
       <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">
        {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
       </b-button>
     </template>
+      
     <template slot="row-details" slot-scope="row">
       <b-card>
         <b-row class="mb-2">
@@ -72,7 +76,7 @@ export default {
       testruns: [],
       sortBy: 'startdate',
       sortDesc: true,
-      fields: [ 'epic', 'source', 'when', 'show_details' ]
+      fields: [ 'project', 'epic', 'source', 'when', 'show_details' ]
     }
   },
   created () {
@@ -81,10 +85,11 @@ export default {
   methods: {
     getTestRuns: async function () {
       var r = await testsService.testruns()
-      console.log(r)
       var table = r.map((tr) => {
         return {
           _rowVariant: tr.status ? 'success' : 'danger',
+          href: "#/prj",
+          project: tr.project,
           epic: tr.epic,
           source: tr.source,
           target: tr.target,

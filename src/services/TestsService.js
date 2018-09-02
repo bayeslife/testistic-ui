@@ -1,6 +1,12 @@
 import api from '@/services/api'
 
 export default {
+
+  async projectTestruns (project) {
+    var response = await api().get('/testruns/projects/' + project)
+    return response.data
+  },
+
   async testruns () {
     var response = await api().get('/testruns')
     // console.log(response)

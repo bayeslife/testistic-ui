@@ -5,10 +5,10 @@
             <v-toolbar-side-icon></v-toolbar-side-icon>
         </v-btn>
         <v-list>
-            <v-list-tile @click="navigateTo('testruns')">
+            <v-list-tile @click="navigateTo('/testruns')">
                 <v-list-tile-title>Test Runs</v-list-tile-title>
             </v-list-tile>
-            <v-list-tile @click="navigateTo('projects')">
+            <v-list-tile @click="navigateTo('/projects')">
                 <v-list-tile-title>Projects</v-list-tile-title>
             </v-list-tile>
         </v-list>

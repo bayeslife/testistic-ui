@@ -7,6 +7,7 @@ import Login from '@/components/Login'
 import Logout from '@/components/Logout'
 import About from '@/components/About'
 import Projects from '@/components/Projects'
+import TestRunsProject from '@/components/TestRunsProject'
 
 Vue.use(Router)
 
@@ -32,6 +33,7 @@ export default new Router({
       name: 'Logout',
       component: Logout
     },
+    
     {
       path: '/testruns',
       name: 'TestRuns',
@@ -41,6 +43,11 @@ export default new Router({
       path: '/projects',
       name: 'projects',
       component: Projects
+    },
+    {
+      path: '/projects/:project',
+      name: 'TestRunsProject',
+      component: TestRunsProject
     },
     {
       path: '/hello',
