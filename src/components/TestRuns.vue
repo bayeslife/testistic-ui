@@ -32,7 +32,7 @@
        {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
       </b-button>
     </template>
-      
+
     <template slot="row-details" slot-scope="row">
       <b-card>
         <b-row class="mb-2">
@@ -88,7 +88,7 @@ export default {
       var table = r.map((tr) => {
         return {
           _rowVariant: tr.status ? 'success' : 'danger',
-          href: "#/prj",
+          href: '#/prj',
           project: tr.project,
           epic: tr.epic,
           source: tr.source,

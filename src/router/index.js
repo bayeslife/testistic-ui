@@ -33,7 +33,6 @@ export default new Router({
       name: 'Logout',
       component: Logout
     },
-    
     {
       path: '/testruns',
       name: 'TestRuns',
@@ -50,7 +49,7 @@ export default new Router({
       component: TestRunsProject
     },
     {
-      path: '/hello',
+      path: '/hello/:parm',
       name: 'HelloWorld',
       component: HelloWorld
     }

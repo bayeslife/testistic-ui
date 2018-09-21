@@ -1,6 +1,5 @@
 <template>
   <div>
-
       <v-layout>
         <v-flex xs4>
           <panel title="New Project">
@@ -20,7 +19,6 @@
           </panel>
         </v-flex>
       </v-layout>
-
   </div>
 </template>
 
