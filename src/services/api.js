@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 export default() => {
+  console.log(`Backend:${process.env.BACKEND_HOST}`)
   return axios.create({
-    baseURL: 'http://localhost:8081'
+    baseURL: `http://${process.env.BACKEND_HOST}:8081`
   })
 }

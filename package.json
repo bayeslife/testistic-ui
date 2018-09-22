@@ -5,6 +5,7 @@
   "author": "phil@xceptionale.com",
   "private": true,
   "scripts": {
+    "docker": "docker build -t gcr.io/testistic-216703/testistic-ui .",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run lint && npm run dev",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
@@ -37,7 +38,7 @@
     "babel-preset-stage-2": "^6.22.0",
     "babel-register": "^6.22.0",
     "chai": "^4.1.2",
-    "chalk": "^2.0.1",
+    "chalk": "^2.4.1",
     "chromedriver": "^2.27.2",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.1",
