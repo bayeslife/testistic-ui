@@ -1,11 +1,11 @@
 {
   "name": "testistic-ui",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Presentation of test statistics",
   "author": "phil@xceptionale.com",
   "private": true,
   "scripts": {
-    "docker": "docker build -t gcr.io/testistic-216703/testistic-ui .",
+    "docker": "docker build -t gcr.io/testistic-216703/testistic-ui:v$npm_package_version .",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run lint && npm run dev",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",

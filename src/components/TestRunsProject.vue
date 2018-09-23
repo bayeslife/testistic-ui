@@ -1,4 +1,4 @@
-<template> 
+<template>
 <div>
     <v-layout>
         <v-flex xs12>
@@ -32,7 +32,7 @@
           </b-table>
           </panel>
         </v-flex>
-    </v-layout> 
+    </v-layout>
 </div>
 </template>
 
@@ -48,7 +48,7 @@ export default {
   },
   data () {
     return {
-      project: "",
+      project: '',
       sortBy: 'startdate',
       sortDesc: true,
       testruns: [],
