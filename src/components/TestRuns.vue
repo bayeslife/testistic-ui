@@ -21,85 +21,41 @@
         </v-card>
     </v-flex>
     <v-flex d-flex xs12 sm6 md6>
-      <panel title="Test Runs">
-
-  <b-table :items="testruns" :fields="fields" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc">
-    <template slot="project" slot-scope="data">
-      <a :href="`#/projects/${data.item.project}`" >{{data.item.project}} </a>
-    </template>
-    <template slot="show_details" slot-scope="row">
-      <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">
-       {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
-      </b-button>
-    </template>
-
-    <template slot="row-details" slot-scope="row">
-      <b-card>
-        <b-row class="mb-2">
-          <b-col sm="3" class="text-sm-right"><b>Source:</b></b-col>
-          <b-col>{{ row.item.source }}</b-col>
-        </b-row>
-        <b-row class="mb-2">
-          <b-col sm="3" class="text-sm-right"><b>Description:</b></b-col>
-          <b-col>{{ row.item.description }}</b-col>
-        </b-row>
-        <b-row class="mb-2">
-          <b-col sm="3" class="text-sm-right"><b>Target:</b></b-col>
-          <b-col>{{ row.item.target }}</b-col>
-        </b-row>
-      </b-card>
-    </template>
-  </b-table>
-
-      </panel>
+        <statistics :title="`Statistics - All`"/>
+    </v-flex>
+    <v-flex d-flex xs12 sm6 md6>
+      <testrunresults :title="`Test Runs - All`">
+      </testrunresults>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import testsService from '@/services/TestsService'
-import Panel from '@/components/Panel'
-import moment from 'moment'
+import Statistics from '@/components/Statistics'
+import Testrunresults from '@/components/Testrunresults'
+
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
   name: 'TestRuns',
   components: {
-    Panel
+    Testrunresults,
+    Statistics
   },
   data () {
     return {
       value: null,
       projects: ['Project1', 'Project2'],
-      initiatives: ['Feature1', 'Feature2'],
-      testruns: [],
-      sortBy: 'startdate',
-      sortDesc: true,
-      fields: [ 'project', 'epic', 'source', 'when', 'show_details' ]
+      initiatives: ['Feature1', 'Feature2']
     }
   },
   created () {
-    this.getTestRuns()
+   
   },
   methods: {
-    getTestRuns: async function () {
-      var r = await testsService.testruns()
-      var table = r.map((tr) => {
-        return {
-          _rowVariant: tr.status ? 'success' : 'danger',
-          href: '#/prj',
-          project: tr.project,
-          epic: tr.epic,
-          source: tr.source,
-          target: tr.target,
-          description: tr.description,
-          startdate: tr.startdate,
-          when: moment(tr.startdate).fromNow()
-        }
-      })
-      this.testruns = table
-    }
+    
   }
 }
 </script>

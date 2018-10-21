@@ -2,14 +2,13 @@ import api from '@/services/api'
 
 export default {
 
-  async projectTestruns (project) {
-    var response = await api().get('/testruns/projects/' + project)
+  async testruns (project='all',epic='all') {
+    var response = await api().get(`/testistic.testruns.${project}.${epic}`)
     return response.data
   },
 
-  async testruns () {
-    var response = await api().get('/testruns')
-    // console.log(response)
+  async statistics (project='all',epic='all') {
+    var response = await api().get(`/testistic.statistics.${project}.${epic}?count=1`)
     return response.data
   },
 

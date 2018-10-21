@@ -44,7 +44,7 @@ export default new Router({
       component: Projects
     },
     {
-      path: '/projects/:project',
+      path: '/projects/:project/:epic',
       name: 'TestRunsProject',
       component: TestRunsProject
     },
