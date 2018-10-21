@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import testsService from '@/services/TestsService'
-import moment from 'moment'
 import Testrunresults from '@/components/Testrunresults'
 import Statistics from '@/components/Statistics'
 

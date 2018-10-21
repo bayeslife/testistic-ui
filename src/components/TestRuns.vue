@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import testsService from '@/services/TestsService'
 import Statistics from '@/components/Statistics'
 import Testrunresults from '@/components/Testrunresults'
 
@@ -52,10 +51,10 @@ export default {
     }
   },
   created () {
-   
+
   },
   methods: {
-    
+
   }
 }
 </script>

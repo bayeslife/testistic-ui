@@ -55,7 +55,7 @@ export default {
       fields: [ 'project', 'epic', 'source', 'when', 'show_details' ]
     }
   },
-    watch: {
+  watch: {
     '$route.params.epic': function (epic) {
       this.init()
     },
@@ -67,12 +67,12 @@ export default {
     this.init()
   },
   methods: {
-   init() {
-    this.getTestRuns(this.$route.params.project,this.$route.params.epic) 
-   },
-   getTestRuns: async function (project,epic) {
-     var r = await testsService.testruns(project,epic)
-     var table = r.map((tr) => {
+    init () {
+      this.getTestRuns(this.$route.params.project, this.$route.params.epic)
+    },
+    getTestRuns: async function (project, epic) {
+      var r = await testsService.testruns(project, epic)
+      var table = r.map((tr) => {
         return {
           _rowVariant: tr.status ? 'success' : 'danger',
           href: '#/prj',
@@ -88,7 +88,7 @@ export default {
       this.testruns = table
     }
   }
-  
+
 }
 </script>
 
