@@ -8,7 +8,8 @@ export default {
   },
 
   async statistics (project = 'all', epic = 'all') {
-    var response = await api().get(`/testistic.statistics.${project}.${epic}?count=1`)
+    var a = await api()
+    var response = await a.get(`/testistic.statistics.${project}.${epic}?count=100`)
     return response.data
   },
 

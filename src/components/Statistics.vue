@@ -46,36 +46,51 @@ export default {
         height: 200,
         margin: 30
       },
-      xScale: d3.scaleLinear().domain([0, 10]).range([0, 800]),  
-      yScale : d3.scaleLinear().domain([0, 1]).range([0, -200]),
-      dataset: d3.range(10).map(function(d) { return {"y": d3.randomUniform(1)() } }),
-      
+      xScale: d3.scaleLinear().domain([0, 100]).range([0, 800]),
+      yScale: d3.scaleLinear().domain([0, 1]).range([0, -200]),
+      averageOver10: null,
+      averageOver100: null,
+      averageOver1000: null,
+
       epic: '',
       project: '',
       statistics: [{
-        averageOver10: 1,
-        averageOver100: 1,
-        averageOver1000: 1
+        averageOver10: 0,
+        averageOver100: 0,
+        averageOver1000: 0
       }]
     }
   },
   directives: {
-    xaxis(el, binding,vnode) {
+    xaxis (el, binding, vnode) {
       d3.select(el).call(d3.axisBottom(vnode.context.xScale))
     },
-    yaxis(el,binding,vnode){
+    yaxis (el, binding, vnode) {
       d3.select(el).call(d3.axisLeft(vnode.context.yScale))
     },
-    line(el,binding,vnode){
-      var line =  d3.line()
-        .x(function(d, i) { return vnode.context.xScale(i) })
-        .y(function(d) { return vnode.context.yScale(d.y) }) 
-        .curve(d3.curveMonotoneX)
-      d3.select(el)
+    line (el, binding, vnode) {
+      vnode.context.getDataset()
+      if(vnode.context.averageOver10){
+        var line = d3.line()
+          .x(function (d, i) { return vnode.context.xScale(i) })
+          .y(function (d) { return vnode.context.yScale(d.y) })
+          .curve(d3.curveMonotoneX)
+        d3.select(el)
+          .append('path')
+          .attr('class', 'averageOver10')
+          .datum(vnode.context.averageOver10)
+          .attr('d', line)
+        d3.select(el)
         .append('path')
-        .attr("class","statline")
-        .datum(vnode.context.dataset)
-        .attr("d", line)
+        .attr('class', 'averageOver100')
+        .datum(vnode.context.averageOver100)
+        .attr('d', line)
+        d3.select(el)
+        .append('path')
+        .attr('class', 'averageOver1000')
+        .datum(vnode.context.averageOver1000)
+        .attr('d', line)
+      }
     }
   },
   watch: {
@@ -89,24 +104,49 @@ export default {
   created () {
     this.init()
   },
+  computed: {
+      
+  },
   methods: {
-    init () {
-      //this.xScale = d3.scaleLinear().domain([0, history - 1]), // input .range([0, width])
-      //this.yScale = d3.scaleLinear().domain([0, 1]), // input .range([height, 0]); // output
-      this.getStatistics(this.$route.params.project, this.$route.params.epic)
-    },
+    init: async function () {
+      await this.getStatistics(this.$route.params.project, this.$route.params.epic)
+      },
     getStatistics: async function (project, epic) {
       this.statistics = await testsService.statistics(project, epic)
-    }
+    },
+    getDataset: async function () {
+        var statistics  = this.statistics
+        var xrange = d3.range(statistics.length)
+        this.averageOver10 = xrange.map(function (d) { 
+          return {
+            'y': statistics[d].averageOver10 } 
+        })
+        this.averageOver100 = xrange.map(function (d) { 
+          return { 'y': statistics[d].averageOver100 } 
+        })
+        this.averageOver1000 = xrange.map(function (d) { 
+          return { 'y': statistics[d].averageOver1000 } 
+        })
+      }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.statline {
+.averageOver10 {
     fill: none;
     stroke: #ffab00;
+    stroke-width: 3;
+}
+.averageOver100 {
+    fill: none;
+    stroke: #ff88ab;
+    stroke-width: 3;
+}
+.averageOver1000 {
+    fill: none;
+    stroke: #00abff;
     stroke-width: 3;
 }
 </style>
